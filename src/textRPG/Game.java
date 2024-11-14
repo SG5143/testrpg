@@ -5,6 +5,7 @@ import stage.Lobby;
 
 public class Game {
 	private Lobby lobby;
+	private boolean isRun = true;
 
 	private Game() {
 		this.lobby = new Lobby();
@@ -18,13 +19,18 @@ public class Game {
 
 	public void run() {
 		startMessage();
-		String menu = IOManager.inputString("여기에 입력 ☞ ");
+		while (true) {
+			String menu = IOManager.inputString("여기에 입력 ☞ ");
 
-		if (menu.equals("시작"))
-			lobby.activate();
-		else {
-			exitMessage();
-			return;
+			if (menu.equals("시작"))
+				isRun = lobby.activate();
+			else if (menu.equals("종료"))
+				isRun = false;
+
+			if (!isRun) {
+				exitMessage();
+				return;
+			}
 		}
 	}
 
