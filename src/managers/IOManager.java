@@ -33,4 +33,17 @@ public class IOManager {
 			e.printStackTrace();
 		}
 	}
+
+	public static String inputString(String msg) {
+		sb.setLength(0);
+		sb.append(msg);
+		try {
+			bw.append(sb);
+			bw.flush();
+			String input = br.readLine();
+			return input;
+		} catch (IOException e) {
+			return "";
+		}
+	}
 }
