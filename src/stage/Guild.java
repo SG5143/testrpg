@@ -1,7 +1,7 @@
 package stage;
 
 import managers.IOManager;
-import managers.UnitManager;
+import managers.UserDataManager;
 import units.Player;
 
 // 길드원 조회
@@ -12,11 +12,11 @@ public class Guild implements Stage {
 
 	public Guild() {
 		// 길드 정보 초기 설정 2 플레이어 제공 및 파티 참여 설정
-		UnitManager.addPlayer(new Player("모험가", 1000, 40));
-		UnitManager.addPlayer(new Player("초보자", 700, 80));
+		UserDataManager.addPlayer(new Player("모험가", 1000, 40));
+		UserDataManager.addPlayer(new Player("초보자", 700, 80));
 
-		UnitManager.joinPartyByindex(0);
-		UnitManager.joinPartyByindex(1);
+		UserDataManager.joinPartyByindex(0);
+		UserDataManager.joinPartyByindex(1);
 	}
 
 	public void activate() {
@@ -46,14 +46,14 @@ public class Guild implements Stage {
 		String msg = """
 
 				===========================
-				=      < 나의 길드 >      =
+				=       < 내 길드 >       =
 				=                         =
 				=    이름      체력  공격 =
 				""";
 		IOManager.printString(msg);
 
-		for (int i = 0; i < UnitManager.getPlayerListSize(); i++) {
-			Player player = UnitManager.getPlayerByIndex(i);
+		for (int i = 0; i < UserDataManager.getPlayerListSize(); i++) {
+			Player player = UserDataManager.getPlayerByIndex(i);
 			IOManager.printString(
 					String.format("= %2d)%-6s%5d  %3d  =\n", i + 1, player.getName(), player.getHp(), player.getAtt()));
 		}
