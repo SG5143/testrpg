@@ -118,7 +118,7 @@ public class Shop implements Stage {
 				=========================================
 				=               < 상 점 >               =
 				=                                       =
-				=     이름        체력   공격     가격  =
+				=     이름      체력   공격        가격 =
 				""";
 		IOManager.printString(msg);
 
