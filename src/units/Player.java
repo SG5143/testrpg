@@ -12,9 +12,10 @@ public class Player {
 	private int exp; // 경험치
 	private int att; // 공격력
 
-	private boolean party;
+	public boolean party;
 
-	public Player() {}
+	public Player() {
+	}
 
 	public Player(String name, int maxHp, int att) {
 		super();
@@ -36,11 +37,27 @@ public class Player {
 	}
 
 	public void attack(Monster target) {
-		
+
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public int getHp() {
+		return hp;
+	}
+
+	public int getAtt() {
+		return att;
+	}
+
 	public void printPlayer() {
-		String info = String.format("[%15s][%5d/%5d][Att : %d]", name, hp, maxHp, att);
+		String msg = """
+				Lv%3d %15s (경험치 %8d)
+				[%5d/%5d][Att : %5d]
+				""";
+		String info = String.format(msg, level, name, exp, hp, maxHp, att);
 		IOManager.printString(info);
 	}
 }
